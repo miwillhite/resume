@@ -16,3 +16,7 @@ end
 get "/" do
   haml :resume
 end
+
+get "/work" do
+  haml :work
+end
