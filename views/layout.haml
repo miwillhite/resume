@@ -10,6 +10,20 @@
     %link{ :rel => "stylesheet", :href => "/stylesheets/styles.css" }
 
   %body
+    %header
+      %img{ :src => Gravatar.new("matthew.willhite@gmail.com").image_url, :alt => "Picture of Matthew Willhite" } 
+      %h1 Matthew Willhite
+      %ol
+        %li 
+          %a{ :href => "mailto:matthew.willhite@gmail.com?subject=Come work for us!" } matthew.willhite@gmail.com
+        %li
+          miwillhite on 
+          %a{ :href => "http://github.com/miwillhite" } github 
+          |
+          %a{ :href => "http://twitter.com/miwillhite" } twitter
+
+        %li 1-503-777-7365
+  
     = yield
     
     %footer
