@@ -1,0 +1,19 @@
+!!! 5
+
+%html
+  %head
+    %meta{ :charset => "utf-8" }
+    %meta{ :name => "description", :content => "Resumé for Matthew Willhite" }
+
+    %title Matthew Willhite | Resumé
+
+    %link{ :rel => "stylesheet", :href => "/stylesheets/styles.css" }
+
+  %body
+    = yield
+    
+    %footer
+      %p 
+        \# This is a Sinatra 1.0 application written in Haml/Sass, using HTML5 Markup. 
+        %br
+        ="# (c) #{Time.now.year}. Matthew Willhite. All rights reserved."

@@ -1,0 +1,109 @@
+$prominent: #333
+$normal:    #666
+$subdued:   #AAA
+$highlight: #FFFAC5
+$rule:      #168544
+
+$section_break: 45px
+
+@import reset.sass
+
+html
+  :background $rule
+
+body
+  :color $normal
+  :padding 55px 65px
+  :margin 10px 0 17px 0
+  :background #FFF
+  :font 
+    :family Verdana, sans-serif
+    :weight normal
+    :size .75em
+  :line-height 1.2em
+  
+hgroup, ol
+  :display block
+  :margin-bottom $section_break
+  ol li
+    :margin-bottom 3px
+  img
+    :float left
+    :margin
+      :right 10px
+      :top -4px
+    
+  
+ol li
+  :margin-bottom $section_break / 2
+
+h1, h2
+  :font
+    :family Georgia, serif
+    :weight normal
+  :color $prominent
+  :margin 0
+  :padding 0
+
+h1
+  :font-size 2.4em
+  :margin
+    :bottom 10px
+
+h2  
+  :letter-spacing .05em
+  :margin-bottom $section_break / 3
+  :font-size 1.8em
+
+h3, h4
+  :text-transform uppercase
+  :letter-spacing .15em
+
+h3
+  :font-weight normal
+  :color $prominent
+  :margin-bottom 3px
+  
+  em
+    :color $normal
+    
+  .note
+    @extend em
+    :display inline
+
+h4
+  :font-size 1.1em
+
+strong
+  :font-weight bold
+  :color $prominent
+  :background $highlight
+
+em
+  :font-family Georgia, serif
+  :font-style italic
+  :text-transform none
+  :letter-spacing 0
+
+a
+  &:hover
+    :background $highlight
+  
+.mission
+  :margin-bottom $section_break
+    
+.desc
+  :margin-bottom 5px
+
+.date
+  @extend h4
+  :font-size 10px
+
+footer
+  p
+    :line-height 1.5em
+    :font
+      :family Monaco, Courier
+      :style italic
+      :size .9em
+    :color $subdued
