@@ -10,7 +10,16 @@
     %link{ :rel => "stylesheet", :href => "/stylesheets/styles.css" }
 
   %body
+    
+  
     %header
+      %nav
+        %ul
+          %li
+            %a{ :href => "/" } Resum&eacute;
+          %li
+            %a{ :href => "/work" } Work
+    
       %img{ :src => Gravatar.new("matthew.willhite@gmail.com").image_url, :alt => "Picture of Matthew Willhite" } 
       %h1 Matthew Willhite
       %ol

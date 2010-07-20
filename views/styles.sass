@@ -2,9 +2,15 @@ $prominent: #333
 $normal:    #666
 $subdued:   #AAA
 $highlight: #FFFAC5
-$rule:      #168544
+$rule:      #319350
 
 $section_break: 45px
+
+@mixin inlineblock
+  :display -moz-inline-stack
+  :display inline-block
+  *display: inline
+  :zoom 1
 
 @import reset.sass
 
@@ -13,7 +19,7 @@ html
 
 body
   :color $normal
-  :padding 55px 65px
+  :padding 20px 65px
   :margin 10px 0 17px 0
   :background #FFF
   :font 
@@ -22,7 +28,7 @@ body
     :size .75em
   :line-height 1.2em
   
-header, ol
+header, nav, ol
   :display block
   :margin-bottom $section_break
   ol li
@@ -32,6 +38,14 @@ header, ol
     :margin
       :right 10px
       :top -4px
+      
+nav 
+  :margin-bottom $section_break + 15px
+  ul
+    li
+      :margin-right 8px
+      @include inlineblock
+    
   
 ol li
   :margin-bottom $section_break / 2
