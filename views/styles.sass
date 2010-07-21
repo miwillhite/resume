@@ -6,6 +6,15 @@ $rule:      #319350
 
 $section_break: 45px
 
+@mixin clearfix
+  *display:     inline-block
+  &:after      
+    :content    " "
+    :display    block
+    :height     0
+    :clear      both
+    :visibility hidden
+
 @mixin inlineblock
   :display -moz-inline-stack
   :display inline-block
@@ -32,27 +41,26 @@ header
   :line-height 1.2em
   
 header, nav, ol
-  :max-width 800px
+  :max-width 600px
   :display block
   :margin-bottom $section_break
   ol li
     :margin-bottom 3px
-  img
-    :float left
-    :margin
-      :right 10px
-      :top -4px
+
       
 nav 
   :margin-bottom $section_break + 15px
+  :color $prominent
   ul
     li
       :margin-right 8px
       @include inlineblock
     
-  
 ol li
   :margin-bottom $section_break / 2
+  
+section ol li
+  @include clearfix
 
 h1, h2
   :font
@@ -88,7 +96,7 @@ h3
     @extend em
 
 h4
-  :font-size 1.1em
+  :font-size 1.2em
 
 strong
   :font-weight bold
@@ -104,7 +112,19 @@ i
 a
   &:hover
     :background $highlight
+
+img
+  :float left
+  :width 80px
+  :height 80px
+  :margin
+    :right 10px
+    :top -4px
+  :background $normal
   
+section img
+  :margin-top 0
+      
 .objective
   :margin-bottom $section_break
     

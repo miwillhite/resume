@@ -3,6 +3,15 @@
 end
 
 helpers do
+  
+  def link_to_unless_current(title, url)
+    if url == request.path
+      title
+    else
+      "<a href=\"#{url}\" title=\"#{title}\">#{title}</a>"
+    end
+  end
+  
 end
 
 # Styles
@@ -19,4 +28,8 @@ end
 
 get "/work" do
   haml :work
+end
+
+get "/case-study" do
+  haml :case_study
 end

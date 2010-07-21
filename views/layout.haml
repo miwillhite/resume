@@ -19,17 +19,19 @@
     %header
       %nav
         %ul
-          %li
-            %a{ :href => "/" } Resum&eacute;
-          %li
-            %a{ :href => "/work" } Work
+          %li<
+            = link_to_unless_current "Resum&eacute", "/"
+          %li<
+            = link_to_unless_current "Work", "/work"
+          %li<
+            = link_to_unless_current "Case Study", "/case-study"
     
       %img{ :src => Gravatar.new("matthew.willhite@gmail.com").image_url, :alt => "Picture of Matthew Willhite" } 
       %h1 Matthew Willhite
       %ol
-        %li 
+        %li<
           %a{ :href => "mailto:matthew.willhite@gmail.com?subject=Come%20work%20for%20us%21" } matthew.willhite@gmail.com
-        %li
+        %li<
           miwillhite on 
           %a{ :href => "http://github.com/miwillhite" } github 
           |
@@ -37,10 +39,11 @@
 
         %li 1-503-777-7365
   
-    = yield
+    %section
+      = yield
     
     %footer
-      %p 
+      %p<
         \# This is a Sinatra 1.0 application written in Haml/Sass, using HTML5 Markup. 
-        %br
+        %br<
         ="# (c) #{Time.now.year}. Matthew Willhite. All rights reserved."
