@@ -110,8 +110,13 @@ i
   :letter-spacing 0
 
 a
+  img
+    :opacity .85
   &:hover
     :background $highlight
+    img
+      :opacity 1
+      
 
 img
   :float left
@@ -126,6 +131,7 @@ section
   img
     :margin-top 0
     :background $subdued
+    :border 1px solid $subdued + #222
       
 .objective
   :margin-bottom $section_break
