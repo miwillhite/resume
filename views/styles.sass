@@ -97,6 +97,11 @@ h3
 h4
   :font-size 1.2em
 
+h5
+  :font-weight bold
+  :color $prominent
+  :margin-bottom 3px
+
 strong
   :font-weight bold
   :color $prominent
@@ -118,7 +123,6 @@ a
     :background $highlight
     img
       :opacity 1
-      
 
 img
   :float left
@@ -127,6 +131,12 @@ img
   :margin
     :right 10px
     :top -4px
+    
+  &.screencap
+    :width auto
+    :height auto
+    :float none
+    :display block
   
 section 
   :max-width 600px
@@ -147,6 +157,13 @@ section
   :font-size 10px
   :color $subdued - #111
 
+pre, code
+  :background $subdued + #505050
+  
+pre
+  :margin-bottom 18px
+  :border 1px solid $subdued + #222
+
 code
   :font
     :family Monaco, Courier
@@ -159,3 +176,4 @@ footer
     :line-height 1.5em
     :font-style italic
     :color $subdued
+    :background none
