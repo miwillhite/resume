@@ -1,16 +1,43 @@
-%h2 Case Study
+%section
+  %h2 Project Name: <b>Stella</b>
+  %p Stella is a Rails based Electronic Medical Records software product. It is deployed in doctor's offices around the country. This is the first web-based version (v8) of the product. Because this project is still underway there are no live links. Below, I have highlighted some of my more significant contributions to the project.
+
+
+%section 
+  %h2 EditableSet
+  %p This jQuery edit-in-place plugin was created for the Patient&rsquo;s Screen so that authorized users could easily update their information.
+  %p 
+    %a{ :href => "http://editable-set.heroku.com" } http://editable-set.heroku.com 
+    | 
+    %a{ :href => "http://github.com/miwillhite/editable-set" } http://github.com/miwillhite/editable-set
+
+%section 
+  %h2 Redesign
+  %p I came into this project after it had already been started. There were remnants from several design ideas before me. When I couldn&rsquo;t stand looking at in anymore I took the initiative to redesign the entire application. I developed a library of our key components and created a styleguide for my peers to follow. 
+  [Imgs]
+
+%section 
+  %h2 Style Organization
+  %p Because the project changed directions and focus often, the design had to be flexible and easily maintainable. I applied this idea to the HTML and CSS as well. Inspired by Nicole Sullivan&rsquo;s OOCSS framework, I designed a stylsheet architecture that relies heavily on the dom. The idea was to create a set of widgets/styles that would &ldquo;know how to act&rdquo; depending on their environment. This meant that we weren't adding extra styles everytime we added a feature, rather we follow a simple guideline and use the html to style our components. This strategy effectively reduced a 1200 line Sass file to a small set of stylesheets totaling less than 600 lines of code. 
+  [Img]
+
+%section 
+  %h2 HTML Interface
+  %p With the styles in place, we needed to refactor the layout and html. We initially developed the application with a fluid version of the 960 grid system. My redesign was inspired by desktop applications and required some very strict, aboslutely positioned elements. 960 was unable to accomodate this, so I created a new grid system that would be flexible enough to handle each of our different layouts and be simple enough that anyone could glance quickly at a page to understand it. The new layout &ldquo;API&rdquo; was designed with a future migration to HTML5 in mind, and uses minimal/semantic markup&hellip;eliminating cruft like <code>.grid_4.alpha.prefix_4</code>.
+  [Img]
+    
+%section 
+  %h2 Navigation System
+  %p With the redesign came an opportunity to also rework our navigation system. Previously, we had navigational items strewn throughout the view code, sometimes hidden in partials, with no established format. I created a couple of view helpers and controller methods that would generate different levels of navigation with different purposes. We now have primary and secondary navigations as well as an &ldquo;action bar&rdquo; where we can put things that affect the current working document. I developed a simple interface so that the navigational elements are declared in the controller class wide, or overriden on the action level if needed.
   
-%p Some sort of introductory paragraph.
+  [Img]
+    
+%section 
+  %h2 Fluid Tabs
+  %p [Img]
+  
+%section 
+  %h2 Javascript Testing
+  %p We are using Cucumber/Rspec/Factory Girl. We write our functional tests in Cucumber and spec our models with Rspec. However, some of our primary interfaces are driven by Javascript. I have spect countless hours experimenting with different frameworks and strategies for the functional testing of javascript with Cucumber. I started by switching Webrat over to Capybara backed by Culerity. This proved to be too limiting and inconsistent in its behavior. After going the other route and tinkering with 3 or 4 javascript testing libraries I had settled on Watir-webdriver paired with Capybara. Scenarios that require Javascript testing were flagged as such and would boot up another server to run the specs. But again, I find inconsistent behavior. I am now in the thinking that Javascript needs to be tested with Javascript, so I&rsquo;ve been trying to plan out a new method that will tie together Cucumber and the Jasmine framework. Results pending. 
+  [Img]
 
-%ol
-  %li 
-    %h3 Redesign
-    %p [Img]
-
-  %li 
-    %h3 Fluid Tabs
-    %p [Img]
-
-  %li 
-    %h3 Style Organization
-    %p [Img]

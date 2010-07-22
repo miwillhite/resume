@@ -120,10 +120,12 @@ img
   :margin
     :right 10px
     :top -4px
-  :background $normal
   
-section img
-  :margin-top 0
+section 
+  :margin-bottom $section_break
+  img
+    :margin-top 0
+    :background $subdued
       
 .objective
   :margin-bottom $section_break
@@ -136,12 +138,15 @@ section img
   :font-size 10px
   :color $subdued - #111
 
+code
+  :font
+    :family Monaco, Courier
+    :size .9em
+
 footer
   :margin-bottom $section_break
   p
+    @extend code
     :line-height 1.5em
-    :font
-      :family Monaco, Courier
-      :style italic
-      :size .9em
+    :font-style italic
     :color $subdued
