@@ -1,11 +1,11 @@
 %section
   %h2 Project Name: Stella
-  %p Stella is a Rails based Electronic Medical Records software product. It is deployed in doctor's offices around the country. This is the first web-based version (v8.0) of the product. Because it&rsquo;s still underway there are no links to the actual project. Below, I have highlighted some of my more significant contributions to the project.
+  %p Stella is a Rails based Electronic Medical Records software product. It is deployed in doctor's offices around the country. This is the first web-based version (v8.0) of the product. Below, I have highlighted some of my more significant contributions to the project.
 
 
 %section 
   %h2 EditableSet
-  %p This jQuery edit-in-place plugin was created for the Patient&rsquo;s Screen so that authorized users could easily update their information.
+  %p This jQuery edit-in-place plugin was created for the Patient&rsquo;s Screen. By simply double clicking the appropriate fieldset authorized users could easily update critical information.
   %p 
     %a{ :href => "http://editable-set.heroku.com" } http://editable-set.heroku.com 
     | 
@@ -14,33 +14,13 @@
 %section 
   %h2 Redesign
   %p 
-    I came into this project after it had already been started. There were remnants from several design ideas before me. When I couldn&rsquo;t stand looking at in anymore I took the initiative to redesign the entire application. I developed a library of our key components and created a styleguide for my peers to follow. 
+    I came into this project eight months ago after it had already been started. There were remnants of several designs past. As our product was reaching beta, it still looked very alpha. When the time was right, I took the initiative to redesign the entire application. I developed a library of our key components and created a styleguide for my peers to follow. 
   %p  
     %img{ :src => "/images/stella_design_cropped.png", :alt => "Before/After screenshot of the Stella Product", :class => "screencap" }
 
 %section 
-  %h2 Style Organization
-  %p 
-    Because the project changed directions and focus often, the design had to be flexible and easily maintainable. I applied this idea to the HTML and CSS as well. Inspired by Nicole Sullivan&rsquo;s OOCSS framework, I designed a stylsheet architecture that relies heavily on the dom. The idea was to create a set of widgets/styles that would &ldquo;know how to act&rdquo; depending on their environment. This meant that we weren&rsquo;t adding extra styles everytime we added a feature, rather we follow a simple guideline and use the html to style our components. This strategy effectively reduced a single 1200 line Sass file to a small set of stylesheets totaling less than 600 lines of code. 
-  %h5 Style Organization
-  :preserve
-    <pre><code>
-      sass/
-        application.sass      // For application specific styles
-        colors.sass           // Color definitions
-        mixins.sass           // Clearfix, inlineblock, etc.
-        content.sass          // Content, meaning non-structural
-        grid.sass             // Styles the grid
-        module.sass           // Components or modules
-        ...
-        // Content, Grid, and Module all have corresponding 'skins' sass files
-        // The skins set purely aesthetic properties like color, borders, shadows, etc.
-
-    </code></pre>
-
-%section 
   %h2 HTML Interface
-  %p With the styles in place, we needed to refactor the layout and html. We had initially developed the application with a fluid version of the 960 grid system. My redesign was inspired by desktop applications and required both fluid (horizontal &amp; vertical) and fluid/fixed layouts. 960 was unable to accomodate this, so I created a new grid system that would be flexible enough to handle each of our different layouts and be simple enough that anyone could glance quickly at a page to understand it. The new layout &ldquo;API&rdquo; was designed with a future migration to HTML5 in mind, and uses minimal/semantic markup&hellip;eliminating cruft like <code>.grid_4.alpha.prefix_4</code>.
+  %p Because the project changed directions and focus often, the design had to be flexible and easily maintainable. I applied this idea to the HTML and CSS as well. We had initially developed the application with a fluid version of the 960 grid system. My redesign was inspired by desktop applications and required both fluid (horizontal &amp; vertical) and fluid/fixed layouts. 960 was unable to accomodate this, so I created a new grid system that would be flexible enough to handle each of our different layouts and be simple enough that anyone could glance quickly at a page to understand it. The new layout &ldquo;API&rdquo; was designed with a future migration to HTML5 in mind, and uses minimal/semantic markup&hellip;eliminating cruft like <code>.grid_4.alpha.prefix_4</code>.
   %h5 Before:
   :preserve
     <pre><code>
@@ -77,6 +57,27 @@
     </code></pre>
     
 %section 
+  %h2 Style Organization
+  %p 
+    Inspired by Nicole Sullivan&rsquo;s OOCSS framework, I designed a stylesheet architecture that relies heavily on the dom. The idea was to create a set of widgets/styles that would &ldquo;know how to act&rdquo; depending on their environment. This meant that we weren&rsquo;t adding extra styles everytime we added a feature, rather we follow a simple guideline and use the html to style our components. Phase one of this strategy effectively reduced a single 1200 line stylesheet to a small set of stylesheets totaling less than 800 lines of code. 
+  %h5 New Style Organization
+  :preserve
+    <pre><code>
+      sass/
+        application.sass      // For application specific styles
+        reset.sass            // A basic reset
+        colors.sass           // Color definitions
+        mixins.sass           // Clearfix, inlineblock, etc.
+        content.sass          // Content, meaning non-structural
+        grid.sass             // Styles the grid
+        module.sass           // Components or modules
+        ...
+        // Content, Grid, and Module all have corresponding 'skins' sass files
+        // The skins set purely aesthetic properties like color, borders, shadows, etc.
+
+    </code></pre>
+
+%section 
   %h2 Navigation System
   %p With the redesign came an opportunity to also rework our navigation system. Previously, we had navigational items strewn throughout the view code, sometimes hidden in partials, with no established format. I created a couple of view helpers and controller methods that would generate different levels of navigation with different purposes. We now have primary and secondary navigations as well as an &ldquo;action bar&rdquo; where we can put things that affect the current working document. I developed a simple interface so that the navigational elements are declared in the controller class wide, or overriden on the action level if needed.
   
@@ -85,15 +86,16 @@
     <pre><code>
       class HomeController < ApplicationController
       
-        # We can set set the selected tabs and override the secondary navigation
+        # We can set set the selected tabs
         def index # aka 'Search'
           @selected_tabs = { :primary => 'Search', :secondary => 'Results' }
-          @navigation[:secondary] = [ ["Results", root_path] ]
           ...
         end
         
+        # And override the secondary and/or primary navigation
         def active
           @selected_tabs = { :primary => 'Active', :secondary => 'Today' }
+          @navigation[:secondary] = [ ["Today", active_path] ]
           ...
         end
 
@@ -106,10 +108,10 @@
           
           def set_navigation
             @navigation = { 
-              :primary => [ ["Search", root_path], 
-                            ["Active", active_path],
-                            ["Appointments", appointments_path] ],
-              :secondary => [ ["Today", active_path] ] 
+              :primary   => [ ["Search", root_path], 
+                              ["Active", active_path],
+                              ["Appointments", appointments_path] ],
+              :secondary => [ ["Results", root_path] ] 
             }
           end
 
@@ -120,5 +122,4 @@
   
 %section 
   %h2 Javascript Testing
-  %p We are using Cucumber/Rspec/Factory Girl. We write our functional tests in Cucumber and spec our models with Rspec. However, some of our primary interfaces are driven by Javascript. I have spect countless hours experimenting with different frameworks and strategies for the functional testing of javascript with Cucumber. I started by switching Webrat over to Capybara backed by Culerity. This proved to be too limiting and inconsistent in its behavior. After going the other route and tinkering with 3 or 4 javascript testing libraries I had settled on Watir-webdriver paired with Capybara. Scenarios that require Javascript testing were flagged as such and would boot up another server to run the specs. But again, I find inconsistent behavior. I am now in the thinking that Javascript needs to be tested with Javascript, so I&rsquo;ve been trying to plan out a new method that will tie together Cucumber and the Jasmine framework. Results pending. 
-
+  %p We are currently using Cucumber/Rspec to test our app. However, many of our views are Javascript driven. I have invested a lot of time researching and experimenting with different testing techniques and technologies (Capybara w/Celerity, Watir-webdriver, Jasmine, QUnit, etc.), but nothing can seem to handle the level of complexity that we need in our functional Javascript tests. I have decided that Javascript needs to be tested by Javascript, the &ldquo;fakers&rdquo; just don&rsquo;t quite cut it. Frustrated by my findings, I have been trying to develop a new system that ties Cucumber and Jasmine together. Results pending.
