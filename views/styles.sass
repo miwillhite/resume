@@ -38,14 +38,15 @@ body
     :size .75em
   :line-height 1.5em
 
+header, footer, section
+  :max-width 600px
+
 header
-  :line-height 1.2em
-  
-header, nav, ol
   :margin-bottom $section_break
+  :line-height 1.2em
   ol li
     :margin-bottom 3px
-      
+  
 nav 
   :margin-bottom $section_break + 15px
   :color $prominent
@@ -57,11 +58,9 @@ nav
 ol li
   :margin-bottom $section_break / 2
   
-section ol li
-  @include clearfix
-  
 section 
-  :max-width 600px
+  ol li
+    @include clearfix
   :margin-bottom $section_break
   img
     :margin-top 0
@@ -98,8 +97,7 @@ h1, h2
 
 h1
   :font-size 2.4em
-  :margin
-    :bottom 10px
+  :margin-bottom 10px
 
 h2  
   :letter-spacing .05em
@@ -114,10 +112,8 @@ h3
   :font-weight normal
   :color $prominent
   :margin-bottom 3px
-  
   i
     :color $subdued - #111
-    
   .note
     @extend em
 
@@ -131,17 +127,6 @@ h5
   &:after
     :content ':'
 
-strong
-  :font-weight bold
-  :color $prominent
-  :background $highlight
-
-i
-  :font-family Georgia, serif
-  :font-style italic
-  :text-transform none
-  :letter-spacing 0
-  
 p
   :margin-bottom 9px
 
@@ -154,6 +139,18 @@ a
       :opacity 1
   &:active
     :color $active
+    
+i
+  :font-family Georgia, serif
+  :font-style italic
+  :text-transform none
+  :letter-spacing 0
+  
+strong
+  :font-weight bold
+  :color $prominent
+  :background $highlight
+
 
 img
   :float left
@@ -168,6 +165,7 @@ img
     :height auto
     :float none
     :display block
+    :margin-bottom 18px
 
       
 .objective
