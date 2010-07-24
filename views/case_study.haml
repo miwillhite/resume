@@ -14,28 +14,19 @@
 %section 
   %h2 Redesign
   %p 
-    I came into this project eight months ago after it had already been started. There were remnants of several designs past. As our product was reaching beta, it still looked very alpha. When the time was right, I took the initiative to redesign the entire application. I developed a library of our key components and created a styleguide for my peers to follow. 
-  %p.container  
-    %img{ :src => "/images/search_mockup.png", :alt => "Search page redesign mockup", :class => "screencap" }
+    I came into this project eight months ago after it had already been started. There were remnants of several designs past. As our product was reaching beta, it still looked very alpha. When the time was right, I took the initiative to redesign the entire application. I developed a library of our key components and created a styleguide for my team to follow. 
+  %h5 Before
+  %p  
     %img{ :src => "/images/search_original.png", :alt => "Search page original design", :class => "screencap" }
-    %img{ :src => "/images/search_current.png", :alt => "Search page initial implementation", :class => "screencap" }
-    %img{ :src => "/images/encounter_mockup.png", :alt => "Encounter page redesign mockup", :class => "screencap" }
-    %img{ :src => "/images/encounter_original.png", :alt => "Encounter page original design", :class => "screencap" }
-    %img{ :src => "/images/encounter_current.png", :alt => "Encounter page initial implementation", :class => "screencap" }
-    %img{ :src => "/images/patient_mockup.png", :alt => "Patient page redesign mockup", :class => "screencap" }
-    %img{ :src => "/images/patient_original.png", :alt => "Patient page original design", :class => "screencap" }
-    %img{ :src => "/images/patient_current.png", :alt => "Patient page initial implementation", :class => "screencap" }
-    %i.image_caption Search page redesign mockup
-    
+  %h5 After
   %p
-    %a.previous{ :href => '#' } Previous
-    %a.next{ :href => '#' } Next
+    %img{ :src => "/images/search_current.png", :alt => "Search page redesign, initial implementation", :class => "screencap" }
     
 
 %section 
   %h2 HTML Interface
   %p Because the project changed directions and focus often, the design had to be flexible and easily maintainable. I applied this idea to the HTML and CSS as well. We had initially developed the application with a fluid version of the 960 grid system. My redesign was inspired by desktop applications and required both fluid (horizontal &amp; vertical) and fluid/fixed layouts. 960 was unable to accomodate this, so I created a new grid system that would be flexible enough to handle each of our different layouts and be simple enough that anyone could glance quickly at a page to understand it. The new layout &ldquo;API&rdquo; was designed with a future migration to HTML5 in mind, and uses minimal/semantic markup&hellip;eliminating cruft like <code>.grid_4.alpha.prefix_4</code>.
-  %h5 Before:
+  %h5 Before
   :preserve
     <pre><code>
       // Require a partial to setup navigation and "action" links
@@ -50,7 +41,7 @@
         
     </code></pre>
       
-  %h5 After:
+  %h5 After
   :preserve
     <pre><code>
       // The "Header", or Navigation, is now handled in the controller
@@ -86,6 +77,7 @@
         grid.sass             // Styles the grid
         module.sass           // Components or modules
         ...
+        
         // Content, Grid, and Module all have corresponding 'skins' sass files
         // The skins set purely aesthetic properties like color, borders, shadows, etc.
 
@@ -95,7 +87,7 @@
   %h2 Navigation System
   %p With the redesign came an opportunity to also rework our navigation system. Previously, we had navigational items strewn throughout the view code, sometimes hidden in partials, with no established format. I created a couple of view helpers and controller methods that would generate different levels of navigation with different purposes. We now have primary and secondary navigations as well as an &ldquo;action bar&rdquo; where we can put things that affect the current working document. I developed a simple interface so that the navigational elements are declared in the controller class wide, or overriden on the action level if needed.
   
-  %h5 Summarized Controller:
+  %h5 Summarized Controller
   :preserve
     <pre><code>
       class HomeController < ApplicationController

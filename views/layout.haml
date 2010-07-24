@@ -14,54 +14,6 @@
     /[if IE]
       %script{ :src => "http://html5shiv.googlecode.com/svn/trunk/html5.js" }
     
-    %script{ :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" }
-    
-    :javascript
-      $(function(){
-          $('.container img:gt(0)').hide();
-          
-          var images = $('.container img'), position = 0;
-          var imageLength = images.length - 1;
-          
-          var printCaption = function( caption ) {
-            $('.image_caption').text( caption );
-          };
-          
-          var nextImage = function() {
-            position = position === imageLength ? 0 : position += 1;
-          
-            images.eq( position - 1 ).fadeOut( 150 );
-            images.eq( position ).fadeIn( 150 );
-            
-            printCaption( images.eq( position ).attr( 'alt' ) );
-          };
-
-          var previousImage = function() {
-            position = position === 0 ? imageLength : position -= 1;
-          
-            images.eq(position + 1).fadeOut( 150 );
-            images.eq(position).fadeIn( 150 );
-            
-            printCaption( images.eq( position ).attr( 'alt' ) );
-          };
-          
-          
-          $('.next').click( function(e) {
-            e.preventDefault();
-            
-            nextImage();
-          });
-
-          $('.previous').click( function(e) {
-            e.preventDefault();
-            
-            previousImage();
-          });
-          // setInterval( nextImage, 3000 );
-          
-          // Should I just do a 1-9, then have it auto rotate?
-      });
-    
   %body
     
   

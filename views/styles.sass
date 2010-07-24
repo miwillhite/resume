@@ -3,6 +3,7 @@ $normal:    #666
 $subdued:   #AAA
 $highlight: #FFFAC5
 $rule:      #319350
+$active:    #F00
 
 $section_break: 45px
 
@@ -41,7 +42,6 @@ header
   :line-height 1.2em
   
 header, nav, ol
-  :display block
   :margin-bottom $section_break
   ol li
     :margin-bottom 3px
@@ -59,6 +59,34 @@ ol li
   
 section ol li
   @include clearfix
+  
+section 
+  :max-width 600px
+  :margin-bottom $section_break
+  img
+    :margin-top 0
+    :border 1px solid $subdued + #222
+    
+pre, code
+  :background $subdued + #505050
+
+pre
+  :margin-bottom 18px
+  :border 1px solid $subdued + #222
+
+code
+  :font
+    :family Monaco, Courier
+    :size .9em
+
+footer
+  :margin-bottom $section_break
+  p
+    @extend code
+    :line-height 1.5em
+    :font-style italic
+    :color $subdued
+    :background none
 
 h1, h2
   :font
@@ -100,6 +128,8 @@ h5
   :font-weight bold
   :color $prominent
   :margin-bottom 3px
+  &:after
+    :content ':'
 
 strong
   :font-weight bold
@@ -122,6 +152,8 @@ a
     :background $highlight
     img
       :opacity 1
+  &:active
+    :color $active
 
 img
   :float left
@@ -136,13 +168,7 @@ img
     :height auto
     :float none
     :display block
-  
-section 
-  :max-width 600px
-  :margin-bottom $section_break
-  img
-    :margin-top 0
-    :border 1px solid $subdued + #222
+
       
 .objective
   :margin-bottom $section_break
@@ -154,38 +180,3 @@ section
   @extend h4
   :font-size 10px
   :color $subdued - #111
-
-pre, code
-  :background $subdued + #505050
-  
-pre
-  :margin-bottom 18px
-  :border 1px solid $subdued + #222
-
-code
-  :font
-    :family Monaco, Courier
-    :size .9em
-
-footer
-  :margin-bottom $section_break
-  p
-    @extend code
-    :line-height 1.5em
-    :font-style italic
-    :color $subdued
-    :background none
-    
-    
-.container
-  :height 240px
-  :width 600px
-  :position relative
-  
-  img
-    :position absolute
-    
-  .image_caption
-    :position absolute
-    :bottom -25px
-    :right 0
