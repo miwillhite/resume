@@ -1,11 +1,11 @@
 %section
   %h2 Project Name: Stella
-  %p Stella is a Rails based Electronic Medical Records software product. It is deployed in doctor's offices around the country. This is the first web-based version (v8.0) of the product. Below, I have highlighted some of my more significant contributions to the project.
+  %p Stella is a Rails based Electronic Medical Records software product. It is deployed in doctors&rsquo; offices around the country. This is the first web-based version (v8.0) of the product. Below, I have highlighted some of my more significant contributions to the project.
 
 
 %section 
   %h2 EditableSet
-  %p This jQuery edit-in-place plugin was created for the Patient&rsquo;s Screen. By simply double clicking the appropriate fieldset authorized users could easily update critical information.
+  %p This jQuery edit-in-place plugin was created for the Patient&rsquo;s Screen. By simply double-clicking the appropriate fieldset authorized users can easily update critical information.
   %p 
     %a{ :href => "http://editable-set.heroku.com" } http://editable-set.heroku.com 
     | 
@@ -25,7 +25,7 @@
 
 %section 
   %h2 HTML Interface
-  %p Because the project changed directions and focus often, the design had to be flexible and easily maintainable. I applied this idea to the HTML and CSS as well. We had initially developed the application with a fluid version of the 960 grid system. My redesign was inspired by desktop applications and required both fluid (horizontal &amp; vertical) and fluid/fixed layouts. 960 was unable to accomodate this, so I created a new grid system that would be flexible enough to handle each of our different layouts and be simple enough that anyone could glance quickly at a page to understand it. The new layout &ldquo;API&rdquo; was designed with a future migration to HTML5 in mind, and uses minimal/semantic markup&hellip;eliminating cruft like <code>.grid_4.alpha.prefix_4</code>.
+  %p Because the project changed directions and focus often, the design had to be flexible and easily maintainable. I applied this idea to the HTML and CSS as well. I created a new grid system that would be flexible enough to handle each of our different layouts (present and future) and be simple enough that anyone could glance quickly at an existing page source to understand it. The new layout &ldquo;API&rdquo; was designed with a future migration to HTML5 in mind, and uses minimal/semantic markup&hellip;eliminating cruft like <code>.grid_4.alpha.prefix_4</code>.
   %h5 Before
   :preserve
     <pre><code>
@@ -92,6 +92,21 @@
     <pre><code>
       class HomeController < ApplicationController
       
+        # This is called as a before filter from the ApplicationController
+        # We create :primary and :secondary navigations by passing
+        # the link title and path, it's also possible to pass in the class
+        # attribute for individual links, or the entire navigation element.
+        
+        def set_navigation
+          @navigation = { 
+            :primary   => [ ["Search", root_path], 
+                            ["Active", active_path],
+                            ["Appointments", appointments_path] ],
+            :secondary => [ ["Results", root_path] ] 
+          }
+        end
+        protected :set_navigation
+      
         # We can set set the selected tabs
         def index # aka 'Search'
           @selected_tabs = { :primary => 'Search', :secondary => 'Results' }
@@ -103,23 +118,7 @@
           @selected_tabs = { :primary => 'Active', :secondary => 'Today' }
           @navigation[:secondary] = [ ["Today", active_path] ]
           ...
-        end
-
-        protected
-        
-          # This is called as a before filter from the application.rb
-          # We create :primary and :secondary navigations by passing
-          # the link title and path, it's also possible to pass in the class
-          # attribute for individual links, or the entire nav element.
-          
-          def set_navigation
-            @navigation = { 
-              :primary   => [ ["Search", root_path], 
-                              ["Active", active_path],
-                              ["Appointments", appointments_path] ],
-              :secondary => [ ["Results", root_path] ] 
-            }
-          end
+        end        
 
       end
         
@@ -128,4 +127,4 @@
   
 %section 
   %h2 Javascript Testing
-  %p We are currently using Cucumber/Rspec to test our app. However, many of our views are Javascript driven. I have invested a lot of time researching and experimenting with different testing techniques and technologies (Capybara w/Celerity, Watir-webdriver, Jasmine, QUnit, etc.), but nothing can seem to handle the level of complexity that we need in our functional Javascript tests. I have decided that Javascript needs to be tested by Javascript, the &ldquo;fakers&rdquo; just don&rsquo;t quite cut it. Frustrated by my findings, I have been trying to develop a new system that ties Cucumber and Jasmine together. Results pending.
+  %p We are currently using Cucumber/Rspec to test our app. However, many of our views are Javascript driven. I have invested a lot of time researching and experimenting with different testing techniques and technologies (Capybara w/Celerity, Watir-webdriver, Jasmine, QUnit, etc.), but nothing can seem to handle the level of complexity that we need in our functional Javascript tests. I have decided that Javascript needs to be tested by Javascript, the &ldquo;fakers&rdquo; just don&rsquo;t cut it. Frustrated by my findings, I have been working to develop a new system that ties Cucumber and Jasmine together. Results pending.
