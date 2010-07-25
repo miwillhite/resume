@@ -17,8 +17,14 @@ end
 # Styles
 get "/stylesheets/styles.css" do
   headers 'Content-Type' => 'text/css; :charset=utf-8'
-	response['Expires'] = (Time.now + 60*60*24*356*3).httpdate
+  response['Expires'] = (Time.now + 60*60*24*356*3).httpdate
   sass :styles
+end
+
+get "/stylesheets/print.css" do
+  headers 'Content-Type' => 'text/css; :charset=utf-8'
+  response['Expires'] = (Time.now + 60*60*24*356*3).httpdate
+  sass :print
 end
 
 # GET
