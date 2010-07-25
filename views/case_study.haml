@@ -1,11 +1,11 @@
 %section
   %h2 Project Name: Stella
-  %p Stella is a Rails based Electronic Medical Records software product. It is deployed in doctors&rsquo; offices around the country. This is the first web-based version (v8.0) of the product. Below, I have highlighted some of my more significant contributions to the project.
+  %p <b>Stella is a Rails based Electronic Medical Records software product.</b> It is deployed in doctors&rsquo; offices around the country. This is the first web-based version (v8.0) of the product. Below, I have highlighted a few of my more significant contributions to the project.
 
 
 %section 
   %h2 EditableSet
-  %p This jQuery edit-in-place plugin was created for the Patient&rsquo;s Screen. By simply double-clicking the appropriate fieldset authorized users can easily update critical information.
+  %p This jQuery edit-in-place plugin was created for the Patient&rsquo;s Screen. <b>By simply double-clicking the appropriate fieldset authorized users can easily update critical information.</b>
   %p 
     %a{ :href => "http://editable-set.heroku.com" } http://editable-set.heroku.com 
     | 
@@ -14,7 +14,7 @@
 %section 
   %h2 Redesign
   %p 
-    I came into this project eight months ago after it had already been started. There were remnants of several designs past. As our product was reaching beta, it still looked very alpha. When the time was right, I took the initiative to redesign the entire application. I developed a library of our key components and created a styleguide for my team to follow. 
+    I came into this project eight months ago after it had already been started. As our product reached beta, it still looked very alpha. <b>When the time was right, I took the initiative to redesign the entire application.</b> I developed a library of our key components and posted a style-usage guide on our Google Wave for my team to follow. 
   %h5 Before
   %p  
     %img{ :src => "/images/search_original.png", :alt => "Search page original design", :class => "screencap" }
@@ -25,7 +25,7 @@
 
 %section 
   %h2 HTML Interface
-  %p Because the project changed directions and focus often, the design had to be flexible and easily maintainable. I applied this idea to the HTML and CSS as well. I created a new grid system that would be flexible enough to handle each of our different layouts (present and future) and be simple enough that anyone could glance quickly at an existing page source to understand it. The new layout &ldquo;API&rdquo; was designed with a future migration to HTML5 in mind, and uses minimal/semantic markup&hellip;eliminating cruft like <code>.grid_4.alpha.prefix_4</code>.
+  %p Because the project changed directions and focus often, the design had to be flexible and easily maintained. I applied this concept to the XHTML and CSS as well. <b>I created a new grid system that would be flexible enough to handle each of our different layouts</b> (present and future) and be simple enough for anyone to quickly scan the source to understand it. The new layout &ldquo;API&rdquo; was designed with HTML5 in mind, and uses minimal, semantic markup&hellip;eliminating cruft like our former <code>.grid_4.alpha.prefix_4</code>.
   %h5 Before
   :preserve
     <pre><code>
@@ -64,7 +64,7 @@
 %section 
   %h2 Style Organization
   %p 
-    Inspired by Nicole Sullivan&rsquo;s OOCSS framework, I designed a stylesheet architecture that relies heavily on the dom. The idea was to create a set of widgets/styles that would &ldquo;know how to act&rdquo; depending on their environment. This meant that we weren&rsquo;t adding extra styles everytime we added a feature, rather we follow a simple guideline and use the html to style our components. Phase one of this strategy effectively reduced a single 1,200 line stylesheet to a small set of stylesheets totaling less than 800 lines of code. 
+    Inspired by Nicole Sullivan&rsquo;s OOCSS framework, I designed a stylesheet architecture that relies heavily on the dom. I created a set of widgets/styles that &ldquo;know how to act&rdquo; depending on their environment. Developers no longer have to add extra styles everytime a feature is added, rather we can now follow a simple guideline and use the markup to style our components. Phase one of this strategy effectively <b>reduced a single 1,200 line stylesheet</b> to a small set of stylesheets totaling <b>less than 800 lines of code</b>. 
   %h5 New Style Organization
   :preserve
     <pre><code>
@@ -85,7 +85,7 @@
 
 %section 
   %h2 Navigation System
-  %p With the redesign came an opportunity to also rework our navigation system. Previously, we had navigational items strewn throughout the view code, sometimes hidden in partials, with no established format. I created a couple of view helpers and controller methods that would generate different levels of navigation with different purposes. We now have primary and secondary navigations as well as an &ldquo;action bar&rdquo; where we can put things that affect the current working document. I developed a simple interface so that the navigational elements are declared in the controller class wide, or overriden on the action level if needed.
+  %p With the redesign came an opportunity to also rework our navigation system. Previously, we had navigational items strewn throughout the view code, sometimes hidden in partials, with no established format. <b>I created a couple of view helpers and controller methods that would generate different levels of navigation with different purposes.</b> We now have primary and secondary navigations as well as an &ldquo;action bar&rdquo; where we can put things that affect the current working document. I developed a simple interface so that the navigational elements are declared in the controller class wide, or overriden on the action level if needed.
   
   %h5 Summarized Controller
   :preserve
@@ -127,4 +127,4 @@
   
 %section 
   %h2 JavaScript Testing
-  %p We are currently using Cucumber/Rspec to test our app. However, many of our views are JavaScript driven. I have invested a lot of time researching and experimenting with different testing techniques and technologies (Capybara w/Celerity, Watir-webdriver, Jasmine, QUnit, etc.), but nothing can seem to handle the level of complexity that we need in our functional JavaScript tests. I have decided that JavaScript needs to be tested by JavaScript, the &ldquo;fakers&rdquo; just don&rsquo;t cut it. Frustrated by my findings, I have been working to develop a new system that ties Cucumber and Jasmine together. Results pending.
+  %p We are currently using Cucumber/Rspec to test our app. However, many of our views are JavaScript driven. I have invested a lot of time researching and experimenting with different testing techniques and technologies (Capybara w/Celerity, Watir-webdriver, Jasmine, QUnit, etc.), but nothing can seem to handle the level of complexity that we need in our functional JavaScript tests. I have decided that JavaScript needs to be tested by JavaScript, the &ldquo;fakers&rdquo; just don&rsquo;t cut it. Frustrated by my findings, <b>I have been working to develop a new system that ties Cucumber and Jasmine together</b>. Results pending.
