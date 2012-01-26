@@ -31,11 +31,11 @@ end
 get "/" do
   haml :resume
 end
-
-get "/work" do
-  haml :work
-end
-
-get "/case-study" do
-  haml :case_study
-end
+# 
+# get "/work" do
+#   haml :work
+# end
+# 
+# get "/case-study" do
+#   haml :case_study
+# end
